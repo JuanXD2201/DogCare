@@ -1,0 +1,6 @@
+{
+  "name": "DogCare",
+  "description": "Aplicación móvil integral para el cuidado canino: cálculo de edad canina, perfiles, asistencia IA, geolocalización de veterinarias, tienda de alimentos, carrito, pasarela de pagos y chat.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,341 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Catch-all deny por defecto
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Funciones auxiliares de autenticación y datos
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function isAdmin() {
+      return isSignedIn() &&
+        exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+        (get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin' ||
+         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'administrador');
+    }
+
+    // FASE 1a: Validación de perfil privado (/users/{userId})
+    function isValidUserProfile(data) {
+      return data.userId is string &&
+             data.displayName is string && data.displayName.size() <= 100 &&
+             data.email is string && data.email.size() <= 150 &&
+             (!('photoUrl' in data) || data.photoUrl == null || (data.photoUrl is string && data.photoUrl.size() <= 500)) &&
+             (!('phone' in data) || data.phone == null || (data.phone is string && data.phone.size() <= 30)) &&
+             (!('deliveryAddress' in data) || data.deliveryAddress == null || (data.deliveryAddress is string && data.deliveryAddress.size() <= 200)) &&
+             (!('role' in data) || data.role in ['user', 'admin', 'usuario', 'administrador']) &&
+             (!('createdAt' in data) || data.createdAt == null || data.createdAt is timestamp) &&
+             (!('updatedAt' in data) || data.updatedAt == null || data.updatedAt is timestamp);
+    }
+
+    // FASE 1a: Validación de perfil público (/publicProfiles/{userId})
+    function isValidPublicProfile(data) {
+      return data.userId is string && data.userId == request.auth.uid &&
+             data.displayName is string && data.displayName.size() <= 100 &&
+             (!('photoUrl' in data) || data.photoUrl == null || (data.photoUrl is string && data.photoUrl.size() <= 500)) &&
+             (!('createdAt' in data) || data.createdAt == null || data.createdAt is timestamp) &&
+             (!('updatedAt' in data) || data.updatedAt == null || data.updatedAt is timestamp);
+    }
+
+    // Validación de mascotas (solo caninos)
+    function isValidPet(data) {
+      return data.id is string &&
+             data.userId is string && data.userId == request.auth.uid &&
+             data.name is string && data.name.size() > 0 && data.name.size() <= 50 &&
+             data.sizeCategory in ['small', 'medium', 'large', 'giant', 'SMALL', 'MEDIUM', 'LARGE', 'GIANT'] &&
+             (!('breed' in data) || data.breed is string) &&
+             (!('ageYears' in data) || data.ageYears is number) &&
+             (!('ageMonths' in data) || data.ageMonths is number) &&
+             (!('weightKg' in data) || data.weightKg is number) &&
+             (!('humanAgeYears' in data) || data.humanAgeYears is number) &&
+             (!('notes' in data) || data.notes is string) &&
+             (!('createdAt' in data) || data.createdAt == null || data.createdAt is timestamp) &&
+             (!('updatedAt' in data) || data.updatedAt == null || data.updatedAt is timestamp);
+    }
+
+    // Marketplace multi-vendedor: cualquier usuario autenticado publica sus propios productos.
+    // sellerUid debe ser el autor (en update se exige además que no cambie respecto a existing()).
+    // FASE 1d: Solo perros (species == 'dog') y categorías autorizadas
+    function isValidProduct(data) {
+      return data.id is string &&
+             data.sellerUid is string && data.sellerUid == request.auth.uid &&
+             data.sellerName is string && data.sellerName.size() > 0 && data.sellerName.size() <= 100 &&
+             data.name is string && data.name.size() > 0 && data.name.size() <= 100 &&
+             data.brand is string && data.brand.size() <= 60 &&
+             (!('species' in data) || data.species == 'dog') &&
+             data.category in ['dry_food', 'wet_food', 'snacks'] &&
+             (!('lifeStage' in data) || data.lifeStage in ['puppy', 'adult', 'senior', 'all_stages']) &&
+             (!('presentation' in data) || (data.presentation is string && data.presentation.size() <= 100)) &&
+             data.priceCop is number && data.priceCop >= 0 &&
+             data.stock is number && data.stock >= 0 &&
+             (!('lastOrderId' in data) || data.lastOrderId is string) &&
+             (!('description' in data) || (data.description is string && data.description.size() <= 1000)) &&
+             (!('imageUrl' in data) || (data.imageUrl is string && data.imageUrl.size() <= 500)) &&
+             (!('active' in data) || data.active is bool) &&
+             (!('createdAt' in data) || data.createdAt == null || data.createdAt is timestamp) &&
+             (!('updatedAt' in data) || data.updatedAt == null || data.updatedAt is timestamp);
+    }
+
+    // Validación de categorías de la tienda (/categories/{id})
+    function isValidCategory(data) {
+      return data.id is string &&
+             data.name is string && data.name.size() > 0 && data.name.size() <= 100 &&
+             (!('description' in data) || data.description == null || data.description is string) &&
+             (!('order' in data) || data.order is int || data.order is number);
+    }
+
+    // Validación de carritos persistentes (/carts/{uid})
+    function isValidCart(data) {
+      return data.items is list &&
+             (!('updatedAt' in data) || data.updatedAt == null || data.updatedAt is timestamp);
+    }
+
+    // FASE 1c: Validación de pedidos
+    function isValidOrder(data) {
+      return data.id is string &&
+             data.userId is string && data.userId == request.auth.uid &&
+             data.totalCop is number && data.totalCop >= 0 &&
+             data.paymentStatus in ['PENDING', 'APPROVED', 'DECLINED', 'REJECTED', 'ERROR'] &&
+             data.deliveryAddress is string && data.deliveryAddress.size() > 0 &&
+             (!('customerName' in data) || data.customerName is string) &&
+             (!('customerPhone' in data) || data.customerPhone is string) &&
+             (!('items' in data) || data.items is list) &&
+             (!('quantities' in data) || data.quantities is map) &&
+             (!('subtotalCop' in data) || data.subtotalCop is number) &&
+             (!('shippingCop' in data) || data.shippingCop is number) &&
+             (!('paymentReference' in data) || data.paymentReference is string) &&
+             (!('paymentMethod' in data) || data.paymentMethod is string) &&
+             (!('createdAt' in data) || data.createdAt == null || data.createdAt is timestamp) &&
+             (!('updatedAt' in data) || data.updatedAt == null || data.updatedAt is timestamp);
+    }
+
+    // FASE 1c: Validación de pagos en /payments
+    function isValidPayment(data) {
+      return data.id is string &&
+             data.orderId is string &&
+             data.userId is string && data.userId == request.auth.uid &&
+             data.amountCop is number && data.amountCop >= 0 &&
+             data.provider is string &&
+             data.status in ['PENDING', 'APPROVED', 'DECLINED', 'REJECTED', 'ERROR'] &&
+             data.paymentReference is string && data.paymentReference.size() > 0 &&
+             (!('createdAt' in data) || data.createdAt == null || data.createdAt is timestamp);
+    }
+
+    // Bloqueo entre usuarios: users/{uid}/blockedUsers/{blockedUid}
+    function isValidBlock(data, blockedUid) {
+      return data.keys().hasOnly(['blockedUid', 'createdAt']) &&
+             data.blockedUid is string && data.blockedUid == blockedUid &&
+             data.blockedUid != request.auth.uid &&
+             (!('createdAt' in data) || data.createdAt == null || data.createdAt is timestamp);
+    }
+
+    // Reporte de usuario (/reports/{reportId})
+    function isValidReport(data, reportId) {
+      return data.keys().hasOnly(['id', 'reporterUid', 'reportedUid', 'conversationId', 'reason', 'createdAt']) &&
+             data.id is string && data.id == reportId &&
+             data.reporterUid is string && data.reporterUid == request.auth.uid &&
+             data.reportedUid is string && data.reportedUid != request.auth.uid &&
+             data.conversationId is string &&
+             data.reason is string && data.reason.size() >= 1 && data.reason.size() <= 500 &&
+             (!('createdAt' in data) || data.createdAt == null || data.createdAt is timestamp);
+    }
+
+    // Conversaciones de 2 participantes: devuelve el otro UID
+    function otherUidIn(uids) {
+      return uids[0] == request.auth.uid ? uids[1] : uids[0];
+    }
+
+    // ¿El otro participante bloqueó al usuario actual? (exists() no depende de las reglas de lectura)
+    function hasBlockedMe(otherUid) {
+      return exists(/databases/$(database)/documents/users/$(otherUid)/blockedUsers/$(request.auth.uid));
+    }
+
+    // Validación de conversaciones P2P
+    function isValidConversation(data) {
+      return data.id is string &&
+             data.participantUids is list && data.participantUids.size() == 2 &&
+             request.auth.uid in data.participantUids &&
+             (!('participantNames' in data) || data.participantNames is map) &&
+             (!('lastMessageText' in data) || data.lastMessageText is string) &&
+             (!('lastSenderUid' in data) || data.lastSenderUid is string) &&
+             (!('lastMessageTimestamp' in data) || data.lastMessageTimestamp == null || data.lastMessageTimestamp is timestamp) &&
+             (!('createdAt' in data) || data.createdAt == null || data.createdAt is timestamp) &&
+             (!('updatedAt' in data) || data.updatedAt == null || data.updatedAt is timestamp);
+    }
+
+    // FASE 1e: Validación de mensajes P2P (senderUid == request.auth.uid)
+    function isValidMessage(data) {
+      return data.id is string &&
+             data.conversationId is string &&
+             data.senderUid is string && data.senderUid == request.auth.uid &&
+             data.text is string && data.text.size() > 0 && data.text.size() <= 2000 &&
+             (!('senderName' in data) || data.senderName is string) &&
+             (!('createdAt' in data) || data.createdAt == null || data.createdAt is timestamp);
+    }
+
+    // FASE 1a: Perfiles privados de usuario vinculados con Authentication (/users/{userId})
+    match /users/{userId} {
+      // Lectura y listado estrictamente restringidos al dueño o administrador
+      allow get: if isSignedIn() && (request.auth.uid == userId || isAdmin());
+      allow list: if isAdmin();
+
+      // El rol se define/edita EXCLUSIVAMENTE desde Firebase (Consola o Backend).
+      // Desde el cliente de la app, el usuario solo se puede registrar con rol 'user'/'usuario' o sin rol.
+      allow create: if isSignedIn() && request.auth.uid == userId && isValidUserProfile(incoming()) &&
+                       (!('role' in incoming()) || incoming().role in ['user', 'usuario']);
+
+      // En actualización desde el cliente de la app, el rol es de solo lectura (no modificable por el cliente).
+      allow update: if isSignedIn() && request.auth.uid == userId && isValidUserProfile(incoming()) &&
+                       (('role' in existing() && incoming().role == existing().role) ||
+                        (!('role' in existing()) && (!('role' in incoming()) || incoming().role in ['user', 'usuario'])));
+
+      allow delete: if isSignedIn() && (request.auth.uid == userId || isAdmin());
+
+      // Subcolección de mascotas (dueño o admin únicamente)
+      match /pets/{petId} {
+        allow get, list: if isSignedIn() && (request.auth.uid == userId || isAdmin());
+        allow create: if isSignedIn() && request.auth.uid == userId && isValidPet(incoming());
+        allow update: if isSignedIn() && request.auth.uid == userId && isValidPet(incoming());
+        allow delete: if isSignedIn() && (request.auth.uid == userId || isAdmin());
+      }
+
+      // Usuarios bloqueados por este usuario (solo el dueño; sin update)
+      match /blockedUsers/{blockedUid} {
+        allow get, list: if isSignedIn() && request.auth.uid == userId;
+        allow create: if isSignedIn() && request.auth.uid == userId && isValidBlock(incoming(), blockedUid);
+        allow delete: if isSignedIn() && request.auth.uid == userId;
+      }
+    }
+
+    // Reportes de usuarios: cualquier usuario crea el suyo; solo admin lee/modera
+    match /reports/{reportId} {
+      allow get, list: if isAdmin();
+      allow create: if isSignedIn() && isValidReport(incoming(), reportId);
+      allow delete: if isAdmin();
+    }
+
+    // FASE 1a: Perfiles públicos de usuario (/publicProfiles/{userId})
+    match /publicProfiles/{userId} {
+      // Lectura abierta a cualquier usuario autenticado para el directorio del chat
+      allow get, list: if isSignedIn();
+
+      // Escritura restringida al dueño con control estricto de campos públicos
+      allow create: if isSignedIn() && request.auth.uid == userId &&
+                       incoming().keys().hasOnly(['userId', 'displayName', 'photoUrl', 'createdAt', 'updatedAt']) &&
+                       isValidPublicProfile(incoming());
+
+      allow update: if isSignedIn() && request.auth.uid == userId &&
+                       incoming().keys().hasOnly(['userId', 'displayName', 'photoUrl', 'createdAt', 'updatedAt']) &&
+                       isValidPublicProfile(incoming());
+
+      allow delete: if isSignedIn() && (request.auth.uid == userId || isAdmin());
+    }
+
+    // FASE 1b & 1d: Catálogo de productos (/products/{productId})
+    match /products/{productId} {
+      // Lectura pública para visitantes e invitados
+      allow get, list: if true;
+
+      // 1) Cualquier usuario autenticado publica sus propios productos caninos (sellerUid == su UID)
+      allow create: if isSignedIn() && isValidProduct(incoming());
+
+      // 1) Solo el vendedor elimina su producto (los productos antiguos sin sellerUid no se pueden borrar desde la app)
+      allow delete: if isSignedIn() && ('sellerUid' in existing()) && existing().sellerUid == request.auth.uid;
+
+      // 2) Actualización: el vendedor edita su producto (sellerUid inmutable) o un comprador descuenta stock
+      //    en la transición PENDING -> APPROVED de su pedido
+      allow update: if (isSignedIn() && ('sellerUid' in existing()) && existing().sellerUid == request.auth.uid &&
+                        isValidProduct(incoming()) && incoming().sellerUid == existing().sellerUid) ||
+                       (isSignedIn() &&
+                        incoming().diff(existing()).affectedKeys().hasOnly(['stock', 'lastOrderId', 'updatedAt']) &&
+                        (incoming().stock is int || incoming().stock is number) &&
+                        incoming().stock >= 0 &&
+                        incoming().stock < existing().stock &&
+                        ('lastOrderId' in incoming()) &&
+                        exists(/databases/$(database)/documents/orders/$(incoming().lastOrderId)) &&
+                        get(/databases/$(database)/documents/orders/$(incoming().lastOrderId)).data.userId == request.auth.uid &&
+                        get(/databases/$(database)/documents/orders/$(incoming().lastOrderId)).data.paymentStatus == 'PENDING' &&
+                        getAfter(/databases/$(database)/documents/orders/$(incoming().lastOrderId)).data.paymentStatus == 'APPROVED' &&
+                        existing().stock - incoming().stock == getAfter(/databases/$(database)/documents/orders/$(incoming().lastOrderId)).data.quantities[productId]);
+    }
+
+    // 3) Categorías de alimentos caninos (/categories/{categoryId})
+    match /categories/{categoryId} {
+      // Lectura pública
+      allow get, list: if true;
+
+      // Catálogo fijo de 3 categorías (dry_food, wet_food, snacks): sin escritura desde la app
+      allow create, update, delete: if false;
+    }
+
+    // 4) Carritos persistentes por usuario (/carts/{uid})
+    match /carts/{uid} {
+      // Solo el dueño lee y escribe su propio carrito
+      allow get, list: if isSignedIn() && request.auth.uid == uid;
+      allow create, update: if isSignedIn() && request.auth.uid == uid && isValidCart(incoming());
+      allow delete: if isSignedIn() && request.auth.uid == uid;
+    }
+
+    // FASE 1c: Gestión de Pedidos (/orders/{orderId})
+    match /orders/{orderId} {
+      allow get, list: if isSignedIn() && (resource.data.userId == request.auth.uid || isAdmin());
+
+      // Creación nace obligatoriamente en 'PENDING'
+      allow create: if isSignedIn() && isValidOrder(incoming()) && incoming().paymentStatus == 'PENDING';
+
+      // Transición única de pago: PENDING -> APPROVED | DECLINED | REJECTED | ERROR
+      allow update: if isSignedIn() && existing().userId == request.auth.uid && isValidOrder(incoming()) &&
+                       existing().paymentStatus == 'PENDING' &&
+                       incoming().paymentStatus in ['APPROVED', 'DECLINED', 'REJECTED', 'ERROR'] &&
+                       ('paymentReference' in incoming()) &&
+                       incoming().paymentReference is string &&
+                       incoming().paymentReference.size() > 0 &&
+                       !incoming().diff(existing()).affectedKeys().hasAny(['totalCop', 'items', 'userId']);
+    }
+
+    // FASE 1c: Colección de Registros de Pagos (/payments/{paymentId})
+    match /payments/{paymentId} {
+      // Solo lectura del dueño del pedido o admin
+      allow get, list: if isSignedIn() && (resource.data.userId == request.auth.uid || isAdmin());
+
+      // Creación validada con existencia del pedido y coincidencia de monto y estado en getAfter
+      allow create: if isSignedIn() && isValidPayment(incoming()) &&
+                       existsAfter(/databases/$(database)/documents/orders/$(incoming().orderId)) &&
+                       getAfter(/databases/$(database)/documents/orders/$(incoming().orderId)).data.userId == request.auth.uid &&
+                       incoming().amountCop == getAfter(/databases/$(database)/documents/orders/$(incoming().orderId)).data.totalCop &&
+                       incoming().status == getAfter(/databases/$(database)/documents/orders/$(incoming().orderId)).data.paymentStatus;
+
+      // Inmutable: no se permite actualización ni borrado de comprobantes
+      allow update, delete: if false;
+    }
+
+    // FASE 1e: Conversaciones P2P (/conversations/{conversationId})
+    match /conversations/{conversationId} {
+      allow get, list: if isSignedIn() && request.auth.uid in resource.data.participantUids;
+      allow create: if isSignedIn() && isValidConversation(incoming()) &&
+                       !hasBlockedMe(otherUidIn(incoming().participantUids));
+      allow update: if isSignedIn() && request.auth.uid in existing().participantUids && isValidConversation(incoming());
+
+      // Mensajes restringidos a participantes y senderUid estricto
+      match /messages/{messageId} {
+        allow get, list: if isSignedIn() && 
+          request.auth.uid in get(/databases/$(database)/documents/conversations/$(conversationId)).data.participantUids;
+        allow create: if isSignedIn() && 
+          request.auth.uid in get(/databases/$(database)/documents/conversations/$(conversationId)).data.participantUids &&
+          !hasBlockedMe(otherUidIn(get(/databases/$(database)/documents/conversations/$(conversationId)).data.participantUids)) &&
+          isValidMessage(incoming());
+      }
+    }
+  }
+}

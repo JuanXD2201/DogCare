@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.MyApplication" parent="android:Theme.DeviceDefault.NoActionBar" />
+
+    <style name="Theme.DogCare.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">#0F766E</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/dogcare_logo_1792629369949</item>
+        <item name="postSplashScreenTheme">@style/Theme.MyApplication</item>
+    </style>
+</resources>

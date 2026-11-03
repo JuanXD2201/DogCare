@@ -1,0 +1,137 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "Public profile and contact info for registered dog owners",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "Auth UID" },
+        "displayName": { "type": "string", "description": "Full name" },
+        "email": { "type": "string", "description": "Email address" },
+        "photoUrl": { "type": "string", "description": "Avatar URL" },
+        "phone": { "type": "string", "description": "Phone number" },
+        "role": { "type": "string", "enum": ["user", "admin"] },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "displayName", "email", "createdAt"]
+    },
+    "Pet": {
+      "title": "Pet",
+      "description": "Dog profile registered by user",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "name": { "type": "string" },
+        "breed": { "type": "string" },
+        "sizeCategory": { "type": "string", "enum": ["small", "medium", "large", "giant"] },
+        "ageYears": { "type": "number" },
+        "ageMonths": { "type": "number" },
+        "weightKg": { "type": "number" },
+        "humanAgeYears": { "type": "number" },
+        "notes": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "name", "sizeCategory", "createdAt"]
+    },
+    "Product": {
+      "title": "Product",
+      "description": "Canine food or snack product in catalog",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "brand": { "type": "string" },
+        "category": { "type": "string", "enum": ["dry_food", "wet_food", "snacks"] },
+        "lifeStage": { "type": "string", "enum": ["puppy", "adult", "senior", "all_stages"] },
+        "presentation": { "type": "string" },
+        "priceCop": { "type": "number" },
+        "stock": { "type": "number" },
+        "description": { "type": "string" },
+        "imageUrl": { "type": "string" },
+        "active": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "name", "brand", "category", "priceCop", "stock", "createdAt"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "Purchase order for canine food items",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "customerName": { "type": "string" },
+        "deliveryAddress": { "type": "string" },
+        "customerPhone": { "type": "string" },
+        "subtotalCop": { "type": "number" },
+        "shippingCop": { "type": "number" },
+        "totalCop": { "type": "number" },
+        "paymentStatus": { "type": "string", "enum": ["PENDING", "APPROVED", "REJECTED"] },
+        "paymentReference": { "type": "string" },
+        "paymentMethod": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "totalCop", "paymentStatus", "deliveryAddress", "createdAt"]
+    },
+    "Conversation": {
+      "title": "Conversation",
+      "description": "Chat thread between pet owners",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "participantUids": { "type": "array" },
+        "lastMessageText": { "type": "string" },
+        "lastSenderUid": { "type": "string" },
+        "lastMessageTimestamp": { "type": "string", "format": "date-time" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "participantUids", "createdAt"]
+    },
+    "ChatMessage": {
+      "title": "ChatMessage",
+      "description": "Individual message inside a user-to-user conversation",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "conversationId": { "type": "string" },
+        "senderUid": { "type": "string" },
+        "senderName": { "type": "string" },
+        "text": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "conversationId", "senderUid", "text", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/UserProfile" },
+      "description": "User profile data scoped to UID"
+    },
+    "/users/{userId}/pets/{petId}": {
+      "schema": { "$ref": "#/entities/Pet" },
+      "description": "Pets owned by user"
+    },
+    "/products/{productId}": {
+      "schema": { "$ref": "#/entities/Product" },
+      "description": "Products catalog"
+    },
+    "/orders/{orderId}": {
+      "schema": { "$ref": "#/entities/Order" },
+      "description": "Orders placed by users"
+    },
+    "/conversations/{conversationId}": {
+      "schema": { "$ref": "#/entities/Conversation" },
+      "description": "P2P Chat threads"
+    },
+    "/conversations/{conversationId}/messages/{messageId}": {
+      "schema": { "$ref": "#/entities/ChatMessage" },
+      "description": "Messages inside conversation"
+    }
+  }
+}
