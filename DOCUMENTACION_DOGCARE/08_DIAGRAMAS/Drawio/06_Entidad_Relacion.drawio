@@ -1,0 +1,142 @@
+<mxfile host="app.diagrams.net" agent="DogCare" version="24.7.0" type="device">
+  <diagram id="dc6" name="Modelo de datos de Cloud Firestore">
+    <mxGraphModel dx="1422" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1700" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="hdr" value="" style="fillColor=#134E4A;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="0" y="0" width="1700" height="84" as="geometry" />
+        </mxCell>
+        <mxCell id="hdr2" value="" style="fillColor=#F97316;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="0" y="84" width="1700" height="4" as="geometry" />
+        </mxCell>
+        <mxCell id="ttl" value="Modelo de datos de Cloud Firestore" style="text;fontFamily=Arial;html=0;fontSize=26;align=left;verticalAlign=middle;fontColor=#FFFFFF;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="14" width="1400" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="sub" value="Colecciones, subcolecciones y relaciones lógicas (Firestore no impone claves foráneas)" style="text;fontFamily=Arial;html=0;fontSize=13;align=left;verticalAlign=middle;fontColor=#99F6E4;" vertex="1" parent="1">
+          <mxGeometry x="40" y="50" width="1400" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="brand" value="DogCare" style="text;fontFamily=Arial;html=0;fontSize=28;align=right;verticalAlign=middle;fontColor=#14B8A6;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1460" y="22" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="frule" value="" style="shape=line;strokeColor=#CBD5E1;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1054" width="1620" height="2" as="geometry" />
+        </mxCell>
+        <mxCell id="foot" value="DogCare  |  Modelo de datos de Cloud Firestore  |  v1.0  |  2026-11-02" style="text;fontFamily=Arial;html=0;fontSize=12;align=left;verticalAlign=middle;fontColor=#475569;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1060" width="1400" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="pg" value="Diagrama 6 de 14" style="text;fontFamily=Arial;html=0;fontSize=12;align=right;verticalAlign=middle;fontColor=#475569;" vertex="1" parent="1">
+          <mxGeometry x="1460" y="1060" width="200" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="usr" value="users/{uid}" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;swimlane;horizontal=1;startSize=34;fillColor=#0F766E;swimlaneFillColor=#FFFFFF;strokeColor=#0F766E;strokeWidth=1.5;fontStyle=1;fontSize=14;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="60" y="130" width="330" height="123" as="geometry" />
+        </mxCell>
+        <mxCell id="usr_f" value="PK userId&#10;displayName, email&#10;phone?, deliveryAddress?&#10;role: user|admin&#10;createdAt, updatedAt" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;text;fontSize=12;align=left;verticalAlign=top;spacingLeft=10;spacingTop=4;" vertex="1" parent="usr">
+          <mxGeometry x="0" y="34" width="330" height="89" as="geometry" />
+        </mxCell>
+        <mxCell id="pub" value="publicProfiles/{uid}" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;swimlane;horizontal=1;startSize=34;fillColor=#0F766E;swimlaneFillColor=#FFFFFF;strokeColor=#0F766E;strokeWidth=1.5;fontStyle=1;fontSize=14;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="60" y="340" width="330" height="93" as="geometry" />
+        </mxCell>
+        <mxCell id="pub_f" value="PK userId&#10;displayName&#10;photoUrl?" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;text;fontSize=12;align=left;verticalAlign=top;spacingLeft=10;spacingTop=4;" vertex="1" parent="pub">
+          <mxGeometry x="0" y="34" width="330" height="59" as="geometry" />
+        </mxCell>
+        <mxCell id="pet" value="users/{uid}/pets/{petId}" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;swimlane;horizontal=1;startSize=34;fillColor=#0F766E;swimlaneFillColor=#FFFFFF;strokeColor=#0F766E;strokeWidth=1.5;fontStyle=1;fontSize=14;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="60" y="500" width="330" height="108" as="geometry" />
+        </mxCell>
+        <mxCell id="pet_f" value="PK id, FK userId&#10;name, breed, sizeCategory&#10;ageYears, ageMonths, weightKg&#10;humanAgeYears, notes" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;text;fontSize=12;align=left;verticalAlign=top;spacingLeft=10;spacingTop=4;" vertex="1" parent="pet">
+          <mxGeometry x="0" y="34" width="330" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="blk" value="users/{uid}/blockedUsers/{id}" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;swimlane;horizontal=1;startSize=34;fillColor=#0F766E;swimlaneFillColor=#FFFFFF;strokeColor=#0F766E;strokeWidth=1.5;fontStyle=1;fontSize=14;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="60" y="710" width="330" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="blk_f" value="PK blockedUid&#10;createdAt" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;text;fontSize=12;align=left;verticalAlign=top;spacingLeft=10;spacingTop=4;" vertex="1" parent="blk">
+          <mxGeometry x="0" y="34" width="330" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="rep" value="reports/{id}" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;swimlane;horizontal=1;startSize=34;fillColor=#0F766E;swimlaneFillColor=#FFFFFF;strokeColor=#0F766E;strokeWidth=1.5;fontStyle=1;fontSize=14;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="60" y="850" width="330" height="93" as="geometry" />
+        </mxCell>
+        <mxCell id="rep_f" value="PK id&#10;FK reporterUid, reportedUid&#10;conversationId, reason" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;text;fontSize=12;align=left;verticalAlign=top;spacingLeft=10;spacingTop=4;" vertex="1" parent="rep">
+          <mxGeometry x="0" y="34" width="330" height="59" as="geometry" />
+        </mxCell>
+        <mxCell id="cat" value="categories/{id}" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;swimlane;horizontal=1;startSize=34;fillColor=#0F766E;swimlaneFillColor=#FFFFFF;strokeColor=#0F766E;strokeWidth=1.5;fontStyle=1;fontSize=14;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="520" y="130" width="330" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="cat_f" value="PK id: dry_food|wet_food|snacks&#10;name, description, order" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;text;fontSize=12;align=left;verticalAlign=top;spacingLeft=10;spacingTop=4;" vertex="1" parent="cat">
+          <mxGeometry x="0" y="34" width="330" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="prd" value="products/{id}" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;swimlane;horizontal=1;startSize=34;fillColor=#0F766E;swimlaneFillColor=#FFFFFF;strokeColor=#0F766E;strokeWidth=1.5;fontStyle=1;fontSize=14;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="520" y="280" width="330" height="153" as="geometry" />
+        </mxCell>
+        <mxCell id="prd_f" value="PK id&#10;FK sellerUid → users&#10;FK category → categories&#10;name, brand, presentation&#10;priceCop, stock (inventario)&#10;lifeStage, species = dog&#10;imageUrl, active" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;text;fontSize=12;align=left;verticalAlign=top;spacingLeft=10;spacingTop=4;" vertex="1" parent="prd">
+          <mxGeometry x="0" y="34" width="330" height="119" as="geometry" />
+        </mxCell>
+        <mxCell id="crt" value="carts/{uid}" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;swimlane;horizontal=1;startSize=34;fillColor=#0F766E;swimlaneFillColor=#FFFFFF;strokeColor=#0F766E;strokeWidth=1.5;fontStyle=1;fontSize=14;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="520" y="560" width="330" height="93" as="geometry" />
+        </mxCell>
+        <mxCell id="crt_f" value="PK uid&#10;items: lista de líneas&#10;updatedAt" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;text;fontSize=12;align=left;verticalAlign=top;spacingLeft=10;spacingTop=4;" vertex="1" parent="crt">
+          <mxGeometry x="0" y="34" width="330" height="59" as="geometry" />
+        </mxCell>
+        <mxCell id="ord" value="orders/{id}" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;swimlane;horizontal=1;startSize=34;fillColor=#0F766E;swimlaneFillColor=#FFFFFF;strokeColor=#0F766E;strokeWidth=1.5;fontStyle=1;fontSize=14;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="520" y="710" width="330" height="123" as="geometry" />
+        </mxCell>
+        <mxCell id="ord_f" value="PK id, FK userId&#10;items[] y quantities (detalle)&#10;subtotalCop, shippingCop, totalCop&#10;paymentStatus, paymentReference&#10;deliveryAddress, customerPhone" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;text;fontSize=12;align=left;verticalAlign=top;spacingLeft=10;spacingTop=4;" vertex="1" parent="ord">
+          <mxGeometry x="0" y="34" width="330" height="89" as="geometry" />
+        </mxCell>
+        <mxCell id="pay" value="payments/{id}" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;swimlane;horizontal=1;startSize=34;fillColor=#0F766E;swimlaneFillColor=#FFFFFF;strokeColor=#0F766E;strokeWidth=1.5;fontStyle=1;fontSize=14;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="980" y="710" width="330" height="108" as="geometry" />
+        </mxCell>
+        <mxCell id="pay_f" value="PK id, FK orderId, FK userId&#10;amountCop, provider = simulación&#10;status, paymentReference&#10;(inmutable)" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;text;fontSize=12;align=left;verticalAlign=top;spacingLeft=10;spacingTop=4;" vertex="1" parent="pay">
+          <mxGeometry x="0" y="34" width="330" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="cnv" value="conversations/{id}" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;swimlane;horizontal=1;startSize=34;fillColor=#0F766E;swimlaneFillColor=#FFFFFF;strokeColor=#0F766E;strokeWidth=1.5;fontStyle=1;fontSize=14;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="980" y="130" width="330" height="108" as="geometry" />
+        </mxCell>
+        <mxCell id="cnv_f" value="PK id&#10;participantUids[2]&#10;participantNames&#10;lastMessageText, lastSenderUid" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;text;fontSize=12;align=left;verticalAlign=top;spacingLeft=10;spacingTop=4;" vertex="1" parent="cnv">
+          <mxGeometry x="0" y="34" width="330" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="msg" value="conversations/{id}/messages/{id}" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;swimlane;horizontal=1;startSize=34;fillColor=#0F766E;swimlaneFillColor=#FFFFFF;strokeColor=#0F766E;strokeWidth=1.5;fontStyle=1;fontSize=14;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="980" y="340" width="330" height="108" as="geometry" />
+        </mxCell>
+        <mxCell id="msg_f" value="PK id, FK conversationId&#10;FK senderUid&#10;text (≤ 2000), senderName&#10;createdAt" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;text;fontSize=12;align=left;verticalAlign=top;spacingLeft=10;spacingTop=4;" vertex="1" parent="msg">
+          <mxGeometry x="0" y="34" width="330" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="nota" value="Inventario = campo stock de products.&#10;Detalle de pedido = items[] y&#10;quantities dentro de orders&#10;(copia de nombre y precio&#10;al momento de comprar)." style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;rounded=1;absoluteArcSize=1;arcSize=8;fillColor=#FFEDD5;strokeColor=#F97316;strokeWidth=1;fontSize=12;align=left;spacingLeft=10;fontColor=#475569;" vertex="1" parent="1">
+          <mxGeometry x="1380" y="130" width="280" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" value="1..*" style="rounded=1;arcSize=16;html=0;fontFamily=Arial;fontSize=12;fontColor=#134E4A;labelBackgroundColor=#FFFFFF;strokeWidth=1.5;exitPerimeter=0;entryPerimeter=0;endArrow=none;startArrow=diamond;startFill=1;startSize=12;strokeColor=#134E4A;exitX=0.3;exitY=1;entryX=0.3;entryY=0;" edge="1" parent="1" source="usr" target="pet">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" value="vende" style="rounded=1;arcSize=16;html=0;fontFamily=Arial;fontSize=12;fontColor=#134E4A;labelBackgroundColor=#FFFFFF;strokeWidth=1.5;exitPerimeter=0;entryPerimeter=0;endArrow=open;endFill=0;strokeColor=#134E4A;exitX=1;exitY=0.3;entryX=0;entryY=0.15;" edge="1" parent="1" source="usr" target="prd">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="455" y="166.9" />
+              <mxPoint x="455" y="302.95" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e3" value="clasifica" style="rounded=1;arcSize=16;html=0;fontFamily=Arial;fontSize=12;fontColor=#134E4A;labelBackgroundColor=#FFFFFF;strokeWidth=1.5;exitPerimeter=0;entryPerimeter=0;endArrow=open;endFill=0;strokeColor=#134E4A;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="cat" target="prd">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" value="genera" style="rounded=1;arcSize=16;html=0;fontFamily=Arial;fontSize=12;fontColor=#134E4A;labelBackgroundColor=#FFFFFF;strokeWidth=1.5;exitPerimeter=0;entryPerimeter=0;endArrow=open;endFill=0;strokeColor=#134E4A;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="ord" target="pay">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="915" y="771.5" />
+              <mxPoint x="915" y="764" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e5" value="1..*" style="rounded=1;arcSize=16;html=0;fontFamily=Arial;fontSize=12;fontColor=#134E4A;labelBackgroundColor=#FFFFFF;strokeWidth=1.5;exitPerimeter=0;entryPerimeter=0;endArrow=none;startArrow=diamond;startFill=1;startSize=12;strokeColor=#134E4A;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="cnv" target="msg">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" value="tiene" style="rounded=1;arcSize=16;html=0;fontFamily=Arial;fontSize=12;fontColor=#134E4A;labelBackgroundColor=#FFFFFF;strokeWidth=1.5;exitPerimeter=0;entryPerimeter=0;endArrow=open;endFill=0;strokeColor=#134E4A;exitX=1;exitY=0.8;entryX=0;entryY=0.5;" edge="1" parent="1" source="usr" target="crt">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="455" y="228.4" />
+              <mxPoint x="455" y="606.5" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,161 @@
+<mxfile host="app.diagrams.net" agent="DogCare" version="24.7.0" type="device">
+  <diagram id="dc4" name="Diagrama de casos de uso">
+    <mxGraphModel dx="1422" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1700" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="hdr" value="" style="fillColor=#134E4A;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="0" y="0" width="1700" height="84" as="geometry" />
+        </mxCell>
+        <mxCell id="hdr2" value="" style="fillColor=#F97316;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="0" y="84" width="1700" height="4" as="geometry" />
+        </mxCell>
+        <mxCell id="ttl" value="Diagrama de casos de uso" style="text;fontFamily=Arial;html=0;fontSize=26;align=left;verticalAlign=middle;fontColor=#FFFFFF;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="14" width="1400" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="sub" value="Actores y funciones de DogCare (CU-01 a CU-09)" style="text;fontFamily=Arial;html=0;fontSize=13;align=left;verticalAlign=middle;fontColor=#99F6E4;" vertex="1" parent="1">
+          <mxGeometry x="40" y="50" width="1400" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="brand" value="DogCare" style="text;fontFamily=Arial;html=0;fontSize=28;align=right;verticalAlign=middle;fontColor=#14B8A6;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1460" y="22" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="frule" value="" style="shape=line;strokeColor=#CBD5E1;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="954" width="1620" height="2" as="geometry" />
+        </mxCell>
+        <mxCell id="foot" value="DogCare  |  Diagrama de casos de uso  |  v1.0  |  2026-11-02" style="text;fontFamily=Arial;html=0;fontSize=12;align=left;verticalAlign=middle;fontColor=#475569;" vertex="1" parent="1">
+          <mxGeometry x="40" y="960" width="1400" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="pg" value="Diagrama 4 de 14" style="text;fontFamily=Arial;html=0;fontSize=12;align=right;verticalAlign=middle;fontColor=#475569;" vertex="1" parent="1">
+          <mxGeometry x="1460" y="960" width="200" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="sys" value="Sistema DogCare" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;swimlane;horizontal=1;startSize=34;fillColor=#CCFBF1;swimlaneFillColor=#F8FAFC;strokeColor=#0F766E;strokeWidth=1.5;fontStyle=1;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="330" y="120" width="1030" height="780" as="geometry" />
+        </mxCell>
+        <mxCell id="u0" value="Registrarse / iniciar sesión (CU-01)" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;ellipse;fillColor=#FFFFFF;strokeColor=#0F766E;strokeWidth=1.5;" vertex="1" parent="sys">
+          <mxGeometry x="50" y="55" width="440" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="u1" value="Gestionar perfil y perros (CU-02)" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;ellipse;fillColor=#FFFFFF;strokeColor=#0F766E;strokeWidth=1.5;" vertex="1" parent="sys">
+          <mxGeometry x="550" y="55" width="440" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="u2" value="Calcular edad canina (CU-03)" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;ellipse;fillColor=#FFFFFF;strokeColor=#0F766E;strokeWidth=1.5;" vertex="1" parent="sys">
+          <mxGeometry x="50" y="195" width="440" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="u3" value="Consultar asistente IA (CU-04)" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;ellipse;fillColor=#FFFFFF;strokeColor=#0F766E;strokeWidth=1.5;" vertex="1" parent="sys">
+          <mxGeometry x="550" y="195" width="440" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="u4" value="Atender urgencia (CU-05)" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;ellipse;fillColor=#FFFFFF;strokeColor=#0F766E;strokeWidth=1.5;" vertex="1" parent="sys">
+          <mxGeometry x="50" y="335" width="440" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="u5" value="Buscar veterinarias (CU-06)" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;ellipse;fillColor=#FFFFFF;strokeColor=#0F766E;strokeWidth=1.5;" vertex="1" parent="sys">
+          <mxGeometry x="550" y="335" width="440" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="u6" value="Explorar y publicar productos (CU-07)" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;ellipse;fillColor=#FFFFFF;strokeColor=#0F766E;strokeWidth=1.5;" vertex="1" parent="sys">
+          <mxGeometry x="50" y="475" width="440" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="u7" value="Comprar con pago simulado (CU-08)" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;ellipse;fillColor=#FFFFFF;strokeColor=#0F766E;strokeWidth=1.5;" vertex="1" parent="sys">
+          <mxGeometry x="550" y="475" width="440" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="u8" value="Conversar con otro usuario (CU-09)" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;ellipse;fillColor=#FFFFFF;strokeColor=#0F766E;strokeWidth=1.5;" vertex="1" parent="sys">
+          <mxGeometry x="50" y="615" width="440" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="inv" value="Invitado" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;fillColor=#CCFBF1;strokeColor=#134E4A;strokeWidth=2;fontStyle=1;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="60" y="220" width="70" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="usr" value="Usuario&#10;registrado" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;fillColor=#CCFBF1;strokeColor=#134E4A;strokeWidth=2;fontStyle=1;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="60" y="560" width="70" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="adm" value="Administrador&#10;(consola Firebase)" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;fillColor=#CCFBF1;strokeColor=#134E4A;strokeWidth=2;fontStyle=1;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="1500" y="560" width="70" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="i0" value="solo lectura" style="rounded=1;arcSize=16;html=0;fontFamily=Arial;fontSize=12;fontColor=#134E4A;labelBackgroundColor=#FFFFFF;strokeWidth=1.5;exitPerimeter=0;entryPerimeter=0;endArrow=none;strokeColor=#0F766E;exitX=1;exitY=0.4;entryX=0;entryY=0.5;" edge="1" parent="1" source="inv" target="u6">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="250" y="264" />
+              <mxPoint x="250" y="640" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="a0" value="" style="rounded=1;arcSize=16;html=0;fontFamily=Arial;fontSize=12;fontColor=#134E4A;labelBackgroundColor=#FFFFFF;strokeWidth=1.5;exitPerimeter=0;entryPerimeter=0;endArrow=none;strokeColor=#0F766E;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="usr" target="u0">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="190" y="615" />
+              <mxPoint x="190" y="220" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="a1" value="" style="rounded=1;arcSize=16;html=0;fontFamily=Arial;fontSize=12;fontColor=#134E4A;labelBackgroundColor=#FFFFFF;strokeWidth=1.5;exitPerimeter=0;entryPerimeter=0;endArrow=none;strokeColor=#0F766E;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="usr" target="u1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="202" y="615" />
+              <mxPoint x="202" y="220" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="a2" value="" style="rounded=1;arcSize=16;html=0;fontFamily=Arial;fontSize=12;fontColor=#134E4A;labelBackgroundColor=#FFFFFF;strokeWidth=1.5;exitPerimeter=0;entryPerimeter=0;endArrow=none;strokeColor=#0F766E;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="usr" target="u2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="214" y="615" />
+              <mxPoint x="214" y="360" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="a3" value="" style="rounded=1;arcSize=16;html=0;fontFamily=Arial;fontSize=12;fontColor=#134E4A;labelBackgroundColor=#FFFFFF;strokeWidth=1.5;exitPerimeter=0;entryPerimeter=0;endArrow=none;strokeColor=#0F766E;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="usr" target="u3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="226" y="615" />
+              <mxPoint x="226" y="360" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="a4" value="" style="rounded=1;arcSize=16;html=0;fontFamily=Arial;fontSize=12;fontColor=#134E4A;labelBackgroundColor=#FFFFFF;strokeWidth=1.5;exitPerimeter=0;entryPerimeter=0;endArrow=none;strokeColor=#0F766E;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="usr" target="u5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="238" y="615" />
+              <mxPoint x="238" y="500" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="a5" value="" style="rounded=1;arcSize=16;html=0;fontFamily=Arial;fontSize=12;fontColor=#134E4A;labelBackgroundColor=#FFFFFF;strokeWidth=1.5;exitPerimeter=0;entryPerimeter=0;endArrow=none;strokeColor=#0F766E;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="usr" target="u6">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="250" y="615" />
+              <mxPoint x="250" y="640" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="a6" value="" style="rounded=1;arcSize=16;html=0;fontFamily=Arial;fontSize=12;fontColor=#134E4A;labelBackgroundColor=#FFFFFF;strokeWidth=1.5;exitPerimeter=0;entryPerimeter=0;endArrow=none;strokeColor=#0F766E;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="usr" target="u7">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="262" y="615" />
+              <mxPoint x="262" y="640" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="a7" value="" style="rounded=1;arcSize=16;html=0;fontFamily=Arial;fontSize=12;fontColor=#134E4A;labelBackgroundColor=#FFFFFF;strokeWidth=1.5;exitPerimeter=0;entryPerimeter=0;endArrow=none;strokeColor=#0F766E;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="usr" target="u8">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="274" y="615" />
+              <mxPoint x="274" y="780" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ad" value="lee reportes" style="rounded=1;arcSize=16;html=0;fontFamily=Arial;fontSize=12;fontColor=#134E4A;labelBackgroundColor=#FFFFFF;strokeWidth=1.5;exitPerimeter=0;entryPerimeter=0;endArrow=none;dashed=1;dashPattern=6 4;strokeColor=#64748B;exitX=0;exitY=0.5;entryX=1;entryY=0.5;" edge="1" parent="1" source="adm" target="u8">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1400" y="615" />
+              <mxPoint x="1400" y="780" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="inc" value="«extend» si hay urgencia" style="rounded=1;arcSize=16;html=0;fontFamily=Arial;fontSize=12;fontColor=#134E4A;labelBackgroundColor=#FFFFFF;strokeWidth=1.5;exitPerimeter=0;entryPerimeter=0;endArrow=open;endFill=0;dashed=1;dashPattern=6 4;strokeColor=#475569;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="u3" target="u4">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1100" y="355" />
+              <mxPoint x="600" y="355" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
