@@ -1,0 +1,115 @@
+<mxfile host="app.diagrams.net" agent="DogCare" version="24.7.0" type="device">
+  <diagram id="dc13" name="Diagrama de despliegue">
+    <mxGraphModel dx="1422" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1700" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="hdr" value="" style="fillColor=#134E4A;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="0" y="0" width="1700" height="84" as="geometry" />
+        </mxCell>
+        <mxCell id="hdr2" value="" style="fillColor=#F97316;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="0" y="84" width="1700" height="4" as="geometry" />
+        </mxCell>
+        <mxCell id="ttl" value="Diagrama de despliegue" style="text;fontFamily=Arial;html=0;fontSize=26;align=left;verticalAlign=middle;fontColor=#FFFFFF;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="14" width="1400" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="sub" value="Teléfono Android, proyecto Firebase Jarvis y servicios públicos" style="text;fontFamily=Arial;html=0;fontSize=13;align=left;verticalAlign=middle;fontColor=#99F6E4;" vertex="1" parent="1">
+          <mxGeometry x="40" y="50" width="1400" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="brand" value="DogCare" style="text;fontFamily=Arial;html=0;fontSize=28;align=right;verticalAlign=middle;fontColor=#14B8A6;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1460" y="22" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="frule" value="" style="shape=line;strokeColor=#CBD5E1;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="854" width="1620" height="2" as="geometry" />
+        </mxCell>
+        <mxCell id="foot" value="DogCare  |  Diagrama de despliegue  |  v1.0  |  2026-11-02" style="text;fontFamily=Arial;html=0;fontSize=12;align=left;verticalAlign=middle;fontColor=#475569;" vertex="1" parent="1">
+          <mxGeometry x="40" y="860" width="1400" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="pg" value="Diagrama 13 de 14" style="text;fontFamily=Arial;html=0;fontSize=12;align=right;verticalAlign=middle;fontColor=#475569;" vertex="1" parent="1">
+          <mxGeometry x="1460" y="860" width="200" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="dev" value="Teléfono Android (API 24+)" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;swimlane;horizontal=1;startSize=34;fillColor=#CCFBF1;swimlaneFillColor=#F8FAFC;strokeColor=#0F766E;strokeWidth=1.5;fontStyle=1;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="60" y="130" width="520" height="620" as="geometry" />
+        </mxCell>
+        <mxCell id="apk" value="DogCare (APK)&#10;com.aistudio.dogcare.kprmdx&#10;Kotlin · Jetpack Compose" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;rounded=1;absoluteArcSize=1;arcSize=12;fillColor=#134E4A;strokeColor=#134E4A;strokeWidth=1.5;fontColor=#FFFFFF;fontStyle=1;" vertex="1" parent="dev">
+          <mxGeometry x="30" y="60" width="460" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="sdk" value="SDK de Firebase&#10;Auth · Firestore · AI Logic · App Check" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;rounded=1;absoluteArcSize=1;arcSize=12;fillColor=#CCFBF1;strokeColor=#0F766E;strokeWidth=1.5;" vertex="1" parent="dev">
+          <mxGeometry x="30" y="230" width="460" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="loc" value="Permisos: ubicación (opcional)&#10;Intents: Maps y marcador" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;rounded=1;absoluteArcSize=1;arcSize=12;fillColor=#F1F5F9;strokeColor=#64748B;strokeWidth=1.5;" vertex="1" parent="dev">
+          <mxGeometry x="30" y="400" width="460" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="fbp" value="Google Cloud · proyecto Firebase «Jarvis»" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;swimlane;horizontal=1;startSize=34;fillColor=#CCFBF1;swimlaneFillColor=#F8FAFC;strokeColor=#0F766E;strokeWidth=1.5;fontStyle=1;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="760" y="130" width="460" height="620" as="geometry" />
+        </mxCell>
+        <mxCell id="f1" value="Authentication&#10;correo · Google" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;rounded=1;absoluteArcSize=1;arcSize=12;fillColor=#CCFBF1;strokeColor=#0F766E;strokeWidth=1.5;" vertex="1" parent="fbp">
+          <mxGeometry x="30" y="60" width="400" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="f2" value="Cloud Firestore (base dedicada)&#10;firestore.rules desplegadas" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;shape=cylinder3;boundedLbl=1;size=12;fillColor=#CCFBF1;strokeColor=#0F766E;strokeWidth=1.5;" vertex="1" parent="fbp">
+          <mxGeometry x="30" y="200" width="400" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="f3" value="Firebase AI Logic → Gemini&#10;gemini-3.5-flash-lite / gemini-3.8-flash" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;rounded=1;absoluteArcSize=1;arcSize=12;fillColor=#CCFBF1;strokeColor=#0F766E;strokeWidth=1.5;" vertex="1" parent="fbp">
+          <mxGeometry x="30" y="350" width="400" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="f4" value="App Check&#10;(depuración: token registrado)" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;rounded=1;absoluteArcSize=1;arcSize=12;fillColor=#CCFBF1;strokeColor=#0F766E;strokeWidth=1.5;" vertex="1" parent="fbp">
+          <mxGeometry x="30" y="490" width="400" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="osm" value="OpenStreetMap&#10;Overpass API · Nominatim&#10;(HTTPS público)" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;rounded=1;absoluteArcSize=1;arcSize=12;fillColor=#F1F5F9;strokeColor=#64748B;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="1380" y="250" width="280" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="d1" value="HTTPS / gRPC" style="rounded=1;arcSize=16;html=0;fontFamily=Arial;fontSize=12;fontColor=#134E4A;labelBackgroundColor=#FFFFFF;strokeWidth=1.5;exitPerimeter=0;entryPerimeter=0;endArrow=block;endFill=1;strokeColor=#0F766E;exitX=1;exitY=0.5;entryX=0;entryY=0.4;" edge="1" parent="1" source="sdk" target="fbp">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="655" y="425" />
+              <mxPoint x="655" y="378" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="d2" value="HTTPS" style="rounded=1;arcSize=16;html=0;fontFamily=Arial;fontSize=12;fontColor=#134E4A;labelBackgroundColor=#FFFFFF;strokeWidth=1.5;exitPerimeter=0;entryPerimeter=0;endArrow=block;endFill=1;dashed=1;dashPattern=6 4;strokeColor=#F97316;strokeWidth=2;exitX=1;exitY=0.2;entryX=0;entryY=0.5;" edge="1" parent="1" source="apk" target="osm">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="600" y="216" />
+              <mxPoint x="600" y="160" />
+              <mxPoint x="1300" y="160" />
+              <mxPoint x="1300" y="315" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="leg" value="" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;rounded=1;absoluteArcSize=1;arcSize=12;fillColor=#FFFFFF;strokeColor=#CBD5E1;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="790" width="1620" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_t" value="Leyenda" style="text;fontFamily=Arial;html=0;fontSize=12;align=left;verticalAlign=middle;fontColor=#475569;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="52" y="794" width="200" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_s0" value="" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;rounded=1;absoluteArcSize=1;arcSize=12;fillColor=#134E4A;strokeColor=#134E4A;strokeWidth=1.5;fontColor=#FFFFFF;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="54" y="827" width="34" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_x0" value="Aplicación" style="text;fontFamily=Arial;html=0;fontSize=12;align=left;verticalAlign=middle;fontColor=#0F172A;" vertex="1" parent="1">
+          <mxGeometry x="96" y="824" width="69" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_s1" value="" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;rounded=1;absoluteArcSize=1;arcSize=12;fillColor=#CCFBF1;strokeColor=#0F766E;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="181" y="827" width="34" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_x1" value="Servicio Firebase" style="text;fontFamily=Arial;html=0;fontSize=12;align=left;verticalAlign=middle;fontColor=#0F172A;" vertex="1" parent="1">
+          <mxGeometry x="223" y="824" width="107" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_s2" value="" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;rounded=1;absoluteArcSize=1;arcSize=12;fillColor=#F1F5F9;strokeColor=#64748B;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="346" y="827" width="34" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_x2" value="Servicio público" style="text;fontFamily=Arial;html=0;fontSize=12;align=left;verticalAlign=middle;fontColor=#0F172A;" vertex="1" parent="1">
+          <mxGeometry x="388" y="824" width="99" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_e3" value="" style="rounded=1;arcSize=16;html=0;fontFamily=Arial;fontSize=12;fontColor=#134E4A;labelBackgroundColor=#FFFFFF;strokeWidth=1.5;exitPerimeter=0;entryPerimeter=0;endArrow=block;endFill=1;strokeColor=#0F766E;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="503" y="836" as="sourcePoint" />
+            <mxPoint x="547" y="836" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="leg_x3" value="Comunicación" style="text;fontFamily=Arial;html=0;fontSize=12;align=left;verticalAlign=middle;fontColor=#0F172A;" vertex="1" parent="1">
+          <mxGeometry x="555" y="824" width="91" height="24" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,136 @@
+<mxfile host="app.diagrams.net" agent="DogCare" version="24.7.0" type="device">
+  <diagram id="dc5" name="Diagrama de clases (modelo de dominio y repositorios)">
+    <mxGraphModel dx="1422" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1700" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="hdr" value="" style="fillColor=#134E4A;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="0" y="0" width="1700" height="84" as="geometry" />
+        </mxCell>
+        <mxCell id="hdr2" value="" style="fillColor=#F97316;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="0" y="84" width="1700" height="4" as="geometry" />
+        </mxCell>
+        <mxCell id="ttl" value="Diagrama de clases (modelo de dominio y repositorios)" style="text;fontFamily=Arial;html=0;fontSize=26;align=left;verticalAlign=middle;fontColor=#FFFFFF;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="14" width="1400" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="sub" value="Clases principales con sus atributos y operaciones clave" style="text;fontFamily=Arial;html=0;fontSize=13;align=left;verticalAlign=middle;fontColor=#99F6E4;" vertex="1" parent="1">
+          <mxGeometry x="40" y="50" width="1400" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="brand" value="DogCare" style="text;fontFamily=Arial;html=0;fontSize=28;align=right;verticalAlign=middle;fontColor=#14B8A6;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1460" y="22" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="frule" value="" style="shape=line;strokeColor=#CBD5E1;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1154" width="1620" height="2" as="geometry" />
+        </mxCell>
+        <mxCell id="foot" value="DogCare  |  Diagrama de clases (modelo de dominio y repositorios)  |  v1.0  |  2026-11-02" style="text;fontFamily=Arial;html=0;fontSize=12;align=left;verticalAlign=middle;fontColor=#475569;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1160" width="1400" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="pg" value="Diagrama 5 de 14" style="text;fontFamily=Arial;html=0;fontSize=12;align=right;verticalAlign=middle;fontColor=#475569;" vertex="1" parent="1">
+          <mxGeometry x="1460" y="1160" width="200" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="pet" value="Pet" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;swimlane;horizontal=1;startSize=34;fillColor=#0F766E;swimlaneFillColor=#FFFFFF;strokeColor=#0F766E;strokeWidth=1.5;fontStyle=1;fontSize=14;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="40" y="120" width="300" height="108" as="geometry" />
+        </mxCell>
+        <mxCell id="pet_f" value="id, userId, name, breed&#10;sizeCategory: small|medium|large|giant&#10;ageYears, ageMonths, weightKg&#10;humanAgeYears, notes" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;text;fontSize=12;align=left;verticalAlign=top;spacingLeft=10;spacingTop=4;" vertex="1" parent="pet">
+          <mxGeometry x="0" y="34" width="300" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="prd" value="Product" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;swimlane;horizontal=1;startSize=34;fillColor=#0F766E;swimlaneFillColor=#FFFFFF;strokeColor=#0F766E;strokeWidth=1.5;fontStyle=1;fontSize=14;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="40" y="330" width="300" height="123" as="geometry" />
+        </mxCell>
+        <mxCell id="prd_f" value="id, sellerUid, sellerName&#10;name, brand, presentation&#10;category: dry_food|wet_food|snacks&#10;lifeStage, priceCop, stock&#10;species = dog, imageUrl, active" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;text;fontSize=12;align=left;verticalAlign=top;spacingLeft=10;spacingTop=4;" vertex="1" parent="prd">
+          <mxGeometry x="0" y="34" width="300" height="89" as="geometry" />
+        </mxCell>
+        <mxCell id="cit" value="CartItem / CartSummary" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;swimlane;horizontal=1;startSize=34;fillColor=#0F766E;swimlaneFillColor=#FFFFFF;strokeColor=#0F766E;strokeWidth=1.5;fontStyle=1;fontSize=14;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="40" y="590" width="300" height="108" as="geometry" />
+        </mxCell>
+        <mxCell id="cit_f" value="product: Product, quantity&#10;subtotal&#10;subtotalCop, shippingCop&#10;totalCop, totalItemsCount" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;text;fontSize=12;align=left;verticalAlign=top;spacingLeft=10;spacingTop=4;" vertex="1" parent="cit">
+          <mxGeometry x="0" y="34" width="300" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="ord" value="Order" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;swimlane;horizontal=1;startSize=34;fillColor=#0F766E;swimlaneFillColor=#FFFFFF;strokeColor=#0F766E;strokeWidth=1.5;fontStyle=1;fontSize=14;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="40" y="790" width="300" height="123" as="geometry" />
+        </mxCell>
+        <mxCell id="ord_f" value="id, userId, customerName&#10;deliveryAddress, customerPhone&#10;items: OrderItemRecord[]&#10;quantities, subtotal/shipping/total&#10;paymentStatus, paymentReference" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;text;fontSize=12;align=left;verticalAlign=top;spacingLeft=10;spacingTop=4;" vertex="1" parent="ord">
+          <mxGeometry x="0" y="34" width="300" height="89" as="geometry" />
+        </mxCell>
+        <mxCell id="usp" value="UserProfile" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;swimlane;horizontal=1;startSize=34;fillColor=#0F766E;swimlaneFillColor=#FFFFFF;strokeColor=#0F766E;strokeWidth=1.5;fontStyle=1;fontSize=14;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="400" y="120" width="300" height="93" as="geometry" />
+        </mxCell>
+        <mxCell id="usp_f" value="userId, displayName, email&#10;photoUrl?, phone?&#10;role: user|admin" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;text;fontSize=12;align=left;verticalAlign=top;spacingLeft=10;spacingTop=4;" vertex="1" parent="usp">
+          <mxGeometry x="0" y="34" width="300" height="59" as="geometry" />
+        </mxCell>
+        <mxCell id="cnv" value="Conversation" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;swimlane;horizontal=1;startSize=34;fillColor=#0F766E;swimlaneFillColor=#FFFFFF;strokeColor=#0F766E;strokeWidth=1.5;fontStyle=1;fontSize=14;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="400" y="290" width="300" height="93" as="geometry" />
+        </mxCell>
+        <mxCell id="cnv_f" value="id, participantUids[2]&#10;participantNames&#10;lastMessageText, lastSenderUid" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;text;fontSize=12;align=left;verticalAlign=top;spacingLeft=10;spacingTop=4;" vertex="1" parent="cnv">
+          <mxGeometry x="0" y="34" width="300" height="59" as="geometry" />
+        </mxCell>
+        <mxCell id="msg" value="ChatMessage" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;swimlane;horizontal=1;startSize=34;fillColor=#0F766E;swimlaneFillColor=#FFFFFF;strokeColor=#0F766E;strokeWidth=1.5;fontStyle=1;fontSize=14;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="400" y="460" width="300" height="93" as="geometry" />
+        </mxCell>
+        <mxCell id="msg_f" value="id, conversationId&#10;senderUid, senderName&#10;text, createdAt" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;text;fontSize=12;align=left;verticalAlign=top;spacingLeft=10;spacingTop=4;" vertex="1" parent="msg">
+          <mxGeometry x="0" y="34" width="300" height="59" as="geometry" />
+        </mxCell>
+        <mxCell id="vet" value="VetClinic" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;swimlane;horizontal=1;startSize=34;fillColor=#0F766E;swimlaneFillColor=#FFFFFF;strokeColor=#0F766E;strokeWidth=1.5;fontStyle=1;fontSize=14;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="400" y="630" width="300" height="108" as="geometry" />
+        </mxCell>
+        <mxCell id="vet_f" value="id, name, address, phone&#10;latitude, longitude&#10;is24hEmergency, openingHours&#10;formatDistance(lat, lng)" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;text;fontSize=12;align=left;verticalAlign=top;spacingLeft=10;spacingTop=4;" vertex="1" parent="vet">
+          <mxGeometry x="0" y="34" width="300" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="aim" value="AiChatMessage" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;swimlane;horizontal=1;startSize=34;fillColor=#0F766E;swimlaneFillColor=#FFFFFF;strokeColor=#0F766E;strokeWidth=1.5;fontStyle=1;fontSize=14;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="400" y="830" width="300" height="93" as="geometry" />
+        </mxCell>
+        <mxCell id="aim_f" value="id, isUser, text&#10;isUrgent, isSystemError&#10;canRetry, timestampMillis" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;text;fontSize=12;align=left;verticalAlign=top;spacingLeft=10;spacingTop=4;" vertex="1" parent="aim">
+          <mxGeometry x="0" y="34" width="300" height="59" as="geometry" />
+        </mxCell>
+        <mxCell id="pr" value="PetRepository · ProductRepository" style="fontFamily=Arial;fontSize=13;html=0;swimlane;horizontal=1;startSize=34;fillColor=#F97316;swimlaneFillColor=#FFFFFF;strokeColor=#C2410C;strokeWidth=1.5;fontStyle=1;fontSize=14;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="800" y="120" width="380" height="123" as="geometry" />
+        </mxCell>
+        <mxCell id="pr_f" value="observePets(): Flow&lt;List&lt;Pet&gt;&gt;&#10;addPet / updatePet / deletePet&#10;observeProducts(): Flow&lt;List&lt;Product&gt;&gt;&#10;addProduct / updateProduct / deleteProduct&#10;validateCartItemsList(items)" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;text;fontSize=12;align=left;verticalAlign=top;spacingLeft=10;spacingTop=4;" vertex="1" parent="pr">
+          <mxGeometry x="0" y="34" width="380" height="89" as="geometry" />
+        </mxCell>
+        <mxCell id="or" value="OrderRepository · CartRepository" style="fontFamily=Arial;fontSize=13;html=0;swimlane;horizontal=1;startSize=34;fillColor=#F97316;swimlaneFillColor=#FFFFFF;strokeColor=#C2410C;strokeWidth=1.5;fontStyle=1;fontSize=14;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="800" y="340" width="380" height="138" as="geometry" />
+        </mxCell>
+        <mxCell id="or_f" value="createOrder(...)&#10;confirmApprovedPayment(order, ref)&#10;markOrderRejected / markOrderError&#10;observeUserOrders(): Flow&lt;List&lt;Order&gt;&gt;&#10;cartSummary: StateFlow&lt;CartSummary&gt;&#10;addToCart / updateQuantity / removeFromCart" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;text;fontSize=12;align=left;verticalAlign=top;spacingLeft=10;spacingTop=4;" vertex="1" parent="or">
+          <mxGeometry x="0" y="34" width="380" height="104" as="geometry" />
+        </mxCell>
+        <mxCell id="cr" value="AuthRepository · UserChatRepository" style="fontFamily=Arial;fontSize=13;html=0;swimlane;horizontal=1;startSize=34;fillColor=#F97316;swimlaneFillColor=#FFFFFF;strokeColor=#C2410C;strokeWidth=1.5;fontStyle=1;fontSize=14;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="800" y="620" width="380" height="123" as="geometry" />
+        </mxCell>
+        <mxCell id="cr_f" value="signUpWithEmail / signInWithEmail&#10;signInWithGoogle / signOut&#10;updateUserProfile(name, phone)&#10;getOrCreateConversation / sendMessage&#10;blockUser / reportUser" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;text;fontSize=12;align=left;verticalAlign=top;spacingLeft=10;spacingTop=4;" vertex="1" parent="cr">
+          <mxGeometry x="0" y="34" width="380" height="89" as="geometry" />
+        </mxCell>
+        <mxCell id="ex" value="AiAssistantRepository · VetClinicRepository" style="fontFamily=Arial;fontSize=13;html=0;swimlane;horizontal=1;startSize=34;fillColor=#F97316;swimlaneFillColor=#FFFFFF;strokeColor=#C2410C;strokeWidth=1.5;fontStyle=1;fontSize=14;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="800" y="880" width="380" height="108" as="geometry" />
+        </mxCell>
+        <mxCell id="ex_f" value="sendMessage(prompt, history)&#10;MODEL_CANDIDATES (25 s por modelo)&#10;búsqueda Overpass + respaldo Nominatim&#10;openNavigationInGoogleMaps / dialPhoneNumber" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;text;fontSize=12;align=left;verticalAlign=top;spacingLeft=10;spacingTop=4;" vertex="1" parent="ex">
+          <mxGeometry x="0" y="34" width="380" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="uc" value="CalculateDogAgeUseCase" style="fontFamily=Arial;fontSize=13;html=0;swimlane;horizontal=1;startSize=34;fillColor=#F97316;swimlaneFillColor=#FFFFFF;strokeColor=#C2410C;strokeWidth=1.5;fontStyle=1;fontSize=14;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="120" width="380" height="108" as="geometry" />
+        </mxCell>
+        <mxCell id="uc_f" value="calculate(years, months, size)&#10;→ DogAgeCalculationResult&#10;humanYearsEquivalent, stage&#10;nutrition/health/exerciseAdvice" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;text;fontSize=12;align=left;verticalAlign=top;spacingLeft=10;spacingTop=4;" vertex="1" parent="uc">
+          <mxGeometry x="0" y="34" width="380" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="em" value="EmergencyDetector" style="fontFamily=Arial;fontSize=13;html=0;swimlane;horizontal=1;startSize=34;fillColor=#F97316;swimlaneFillColor=#FFFFFF;strokeColor=#C2410C;strokeWidth=1.5;fontStyle=1;fontSize=14;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="340" width="380" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="em_f" value="detect(text): Boolean&#10;normaliza tildes y mayúsculas" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;text;fontSize=12;align=left;verticalAlign=top;spacingLeft=10;spacingTop=4;" vertex="1" parent="em">
+          <mxGeometry x="0" y="34" width="380" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="pg" value="PaymentGatewayRepository" style="fontFamily=Arial;fontSize=13;html=0;swimlane;horizontal=1;startSize=34;fillColor=#F97316;swimlaneFillColor=#FFFFFF;strokeColor=#C2410C;strokeWidth=1.5;fontStyle=1;fontSize=14;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="480" width="380" height="93" as="geometry" />
+        </mxCell>
+        <mxCell id="pg_f" value="processSandboxPayment(order, card, …)&#10;→ PaymentReceipt (SIMULADO)&#10;APPROVED | REJECTED | PENDING" style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;text;fontSize=12;align=left;verticalAlign=top;spacingLeft=10;spacingTop=4;" vertex="1" parent="pg">
+          <mxGeometry x="0" y="34" width="380" height="59" as="geometry" />
+        </mxCell>
+        <mxCell id="nrep" value="Los repositorios (naranja) leen y&#10;escriben los modelos (verde) y&#10;los exponen como Flow/StateFlow." style="fontFamily=Arial;fontSize=13;html=0;fontColor=#134E4A;rounded=1;absoluteArcSize=1;arcSize=8;fillColor=#FFEDD5;strokeColor=#F97316;strokeWidth=1;fontSize=12;align=left;spacingLeft=10;fontColor=#475569;" vertex="1" parent="1">
+          <mxGeometry x="400" y="1030" width="300" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="r6" value="1..*" style="rounded=1;arcSize=16;html=0;fontFamily=Arial;fontSize=12;fontColor=#134E4A;labelBackgroundColor=#FFFFFF;strokeWidth=1.5;exitPerimeter=0;entryPerimeter=0;endArrow=none;startArrow=diamond;startFill=1;startSize=12;strokeColor=#134E4A;exitX=0.3;exitY=0;entryX=0.3;entryY=1;" edge="1" parent="1" source="cit" target="prd">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
