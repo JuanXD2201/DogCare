@@ -1,0 +1,17 @@
+{
+  "project_info": {
+    "project_number": "<PROJECT_NUMBER>",
+    "project_id": "<FIREBASE_PROJECT_ID>",
+    "storage_bucket": "<FIREBASE_PROJECT_ID>.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "<MOBILESDK_APP_ID>",
+        "android_client_info": { "package_name": "com.aistudio.dogcare.kprmdx" }
+      },
+      "api_key": [ { "current_key": "<ANDROID_API_KEY_RESTRINGIDA_POR_PAQUETE_Y_SHA1>" } ]
+    }
+  ],
+  "configuration_version": "1"
+}
