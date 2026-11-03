@@ -18,7 +18,7 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.tasks.await
 
-class UserChatRepository(private val context: Context) {
+open class UserChatRepository(private val context: Context) {
   private val db: FirebaseFirestore = FirebaseFirestore.getInstance(
     context.getString(R.string.firestore_database_id)
   )
@@ -28,7 +28,7 @@ class UserChatRepository(private val context: Context) {
       ?: throw IllegalStateException("Usuario no autenticado para el chat de comunidad.")
   }
 
-  fun observeUsersDirectory(): Flow<List<UserProfile>> = flow {
+  open fun observeUsersDirectory(): Flow<List<UserProfile>> = flow {
     val uid = requireUserId()
     val path = "publicProfiles"
     db.collection("publicProfiles")
@@ -44,7 +44,7 @@ class UserChatRepository(private val context: Context) {
       .collect { emit(it) }
   }
 
-  fun observeUserConversations(): Flow<List<Conversation>> = flow {
+  open fun observeUserConversations(): Flow<List<Conversation>> = flow {
     val uid = requireUserId()
     val path = "conversations"
     db.collection("conversations")
@@ -61,7 +61,7 @@ class UserChatRepository(private val context: Context) {
       .collect { emit(it) }
   }
 
-  fun observeMessages(conversationId: String): Flow<List<ChatMessage>> = flow {
+  open fun observeMessages(conversationId: String): Flow<List<ChatMessage>> = flow {
     val path = "conversations/$conversationId/messages"
     db.collection("conversations").document(conversationId).collection("messages")
       .orderBy("createdAt")
@@ -150,7 +150,7 @@ class UserChatRepository(private val context: Context) {
   }
 
   /** UIDs que el usuario actual ha bloqueado (users/{uid}/blockedUsers). */
-  fun observeBlockedUids(): Flow<Set<String>> = flow {
+  open fun observeBlockedUids(): Flow<Set<String>> = flow {
     val uid = requireUserId()
     val path = "users/$uid/blockedUsers"
     db.collection("users").document(uid).collection("blockedUsers")

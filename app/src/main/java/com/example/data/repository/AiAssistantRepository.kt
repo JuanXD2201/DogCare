@@ -20,7 +20,9 @@ private const val TAG = "DogCareAI"
 // Modelos de Gemini vía Firebase AI Logic, en orden de preferencia. gemini-2.5-flash dejó de estar disponible
 // para proyectos nuevos (el servidor sugiere gemini-3.8-flash). Si un modelo no responde a tiempo o ya no
 // existe, se prueba el siguiente; solo hay que editar esta lista cuando Google retire alguno.
-private val MODEL_CANDIDATES = listOf("gemini-3.8-flash", "gemini-2.5-flash-lite", "gemini-2.0-flash")
+// gemini-3.5-flash-lite va primero: gemini-3.8-flash aceptaba la solicitud pero no respondía en 25 s en dispositivo,
+// y el servidor sugirió este modelo al rechazar gemini-2.5-flash-lite y gemini-2.0-flash (retirados).
+private val MODEL_CANDIDATES = listOf("gemini-3.5-flash-lite", "gemini-3.8-flash")
 
 // Tiempo máximo por modelo; sin límite la interfaz quedaba cargando indefinidamente
 private const val MODEL_TIMEOUT_MS = 25_000L
