@@ -20,7 +20,7 @@ import kotlinx.coroutines.withContext
 
 import com.example.domain.model.StoreCategory
 
-class ProductRepository(private val context: Context) {
+open class ProductRepository(private val context: Context) {
   private val db: FirebaseFirestore = FirebaseFirestore.getInstance(
     context.getString(R.string.firestore_database_id)
   )
@@ -29,7 +29,7 @@ class ProductRepository(private val context: Context) {
   private val categoriesRef = db.collection("categories")
 
   // E) Chips de la tienda leen de Firestore con la enum/valores por defecto como respaldo
-  fun observeCategories(): Flow<List<StoreCategory>> = flow {
+  open fun observeCategories(): Flow<List<StoreCategory>> = flow {
     categoriesRef.snapshots()
       .map { snapshot ->
         val list = snapshot.toObjects(StoreCategory::class.java).sortedBy { it.order }
@@ -55,7 +55,7 @@ class ProductRepository(private val context: Context) {
 
   // Marketplace multi-vendedor: se listan los productos activos y, además, los inactivos del propio vendedor
   // para que pueda reactivarlos. Si no hay productos se muestra el estado vacío (no hay catálogo sembrado).
-  fun observeProducts(): Flow<List<Product>> = flow {
+  open fun observeProducts(): Flow<List<Product>> = flow {
     val path = "products"
     collectionRef.snapshots()
       .map { snapshot ->

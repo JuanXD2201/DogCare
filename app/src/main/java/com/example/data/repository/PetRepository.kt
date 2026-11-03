@@ -18,7 +18,7 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.tasks.await
 
-class PetRepository(private val context: Context) {
+open class PetRepository(private val context: Context) {
   private val db: FirebaseFirestore = FirebaseFirestore.getInstance(
     context.getString(R.string.firestore_database_id)
   )
@@ -29,7 +29,7 @@ class PetRepository(private val context: Context) {
       ?: throw IllegalStateException("Usuario no autenticado para acceder a sus mascotas.")
   }
 
-  fun observePets(): Flow<List<Pet>> = flow {
+  open fun observePets(): Flow<List<Pet>> = flow {
     val uid = requireUserId()
     val path = "users/$uid/pets"
     emitAll(

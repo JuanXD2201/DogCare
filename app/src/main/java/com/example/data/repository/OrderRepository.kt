@@ -20,7 +20,7 @@ import kotlinx.coroutines.tasks.await
 
 class StockOrPriceChangedException(message: String) : Exception(message)
 
-class OrderRepository(private val context: Context) {
+open class OrderRepository(private val context: Context) {
   private val db: FirebaseFirestore = FirebaseFirestore.getInstance(
     context.getString(R.string.firestore_database_id)
   )
@@ -30,7 +30,7 @@ class OrderRepository(private val context: Context) {
       ?: throw IllegalStateException("Usuario no autenticado para gestionar pedidos.")
   }
 
-  fun observeUserOrders(): Flow<List<Order>> = flow {
+  open fun observeUserOrders(): Flow<List<Order>> = flow {
     val uid = requireUserId()
     val path = "orders"
     db.collection("orders")
